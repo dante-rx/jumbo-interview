@@ -10,10 +10,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Component
 public class StoreJsonRepository implements StoreRepository{
-    @Autowired
-    private Set<Store> stores;
+    private final Set<Store> stores;
+
+    public StoreJsonRepository(Set<Store> stores) {
+        this.stores = stores;
+    }
 
     @Override
     public List<Store> findTopClosestStoresByLatitudeAndLongitude(double latitude, double longitude, int numberOfStoresToReturn) {
